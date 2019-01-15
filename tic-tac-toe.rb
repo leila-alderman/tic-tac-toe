@@ -58,6 +58,10 @@ class Board
     end
   end
 
+  def draw?
+    (!@state[0].include?(" ") && !@state[1].include?(" ")) && !@state[2].include?(" ")
+  end
+
 end
 
 
@@ -96,6 +100,10 @@ def play_game
       else
         puts "Game over! Victory goes to #{player_2.name}!"
       end
+    end
+    if board.draw?
+      game_over = true
+      puts "Game over! It's a draw."
     end
   end
 end
