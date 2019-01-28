@@ -7,9 +7,14 @@ class Player
 end
 
 class Board 
+  
+  attr_accessor :game_over
+  
   @@initial_state = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
+  
   def initialize
     @state = @@initial_state
+    @game_over = false
   end
 
   def show_board
@@ -24,11 +29,17 @@ class Board
 
   def round(player)
     puts "It's #{player.name}'s turn!"
-    puts "Enter your move as 'row number, column number'."
+    puts "Enter your move as follows: row number, column number."
+    puts "Otherwise, enter q to quit."
     move = gets.chomp
+    if move == "q"
+      puts "Thanks for playing!"
+      @game_over = true
+      return
+    end
     moves = move.gsub(" ", "").split(",").map { |x| x.to_i - 1 } 
     if @state[moves[0]][moves[1]] == " "
-      @state[moves[0]][moves[1]] = player.symbol
+      @state[moves[0]][moves[1]] = player.symbol 
     else
       puts "Invalid move! Try again."
       round(player)
@@ -84,8 +95,7 @@ def play_game
 
   # Use turn variable to alternate players
   turn = 1
-  game_over = false
-  while game_over == false
+  while board.game_over == false
     if turn % 2 == 1
       board.round(player_1)
       turn += 1
@@ -94,7 +104,7 @@ def play_game
       turn += 1
     end
     if board.winner?
-      game_over = true
+      board.game_over = true
       if turn % 2 == 0
         puts "Game over! Victory goes to #{player_1.name}!"
       else
@@ -102,7 +112,7 @@ def play_game
       end
     end
     if board.draw?
-      game_over = true
+      board.game_over = true
       puts "Game over! It's a draw."
     end
   end

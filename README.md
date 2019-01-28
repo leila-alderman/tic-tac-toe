@@ -1,6 +1,6 @@
 # Terminal Tic-Tac-Toe
 
-This Ruby project creates a two-player game of Tic-Tac-Toe that can be played in the terminal.
+This Ruby project is a two-player game of Tic-Tac-Toe that can be played in the terminal.
 
 [This project](https://www.theodinproject.com/courses/ruby-programming/lessons/oop) is part of the [The Odin Project](https://www.theodinproject.com) curriculum.
 
