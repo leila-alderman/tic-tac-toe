@@ -25,4 +25,4 @@ This Ruby project is a two-player game of Tic-Tac-Toe that can be played in the 
 ~~~
   - If you do not see output similar to the above, then you need to install `rspec` by typing `gem install rspec` into the command line.
  - Now, run `rspec --version` again to ensure that it installed correctly.
-5. Use`cd` to move into the main directory and then run `rspec` to show the tests.
+5. Use `cd` to move into the main directory and then run `rspec` to show the tests.

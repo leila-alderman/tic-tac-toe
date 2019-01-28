@@ -9,6 +9,7 @@ end
 class Board 
   
   attr_accessor :game_over
+  attr_reader :state
   
   @@initial_state = [[" ", " ", " "], [" ", " ", " "], [" ", " ", " "]]
   
@@ -17,14 +18,14 @@ class Board
     @game_over = false
   end
 
-  def show_board
-    puts " "
-    puts " #{@state[0][0]} | #{@state[0][1]} | #{@state[0][2]} "
-    puts "---|---|---"
-    puts " #{@state[1][0]} | #{@state[1][1]} | #{@state[1][2]} "
-    puts "---|---|---"
-    puts " #{@state[2][0]} | #{@state[2][1]} | #{@state[2][2]} "
-    puts " "
+  def make_board
+    image = " 
+     #{@state[0][0]} | #{@state[0][1]} | #{@state[0][2]}
+    ---|---|---
+     #{@state[1][0]} | #{@state[1][1]} | #{@state[1][2]}
+    ---|---|---
+     #{@state[2][0]} | #{@state[2][1]} | #{@state[2][2]}
+    "
   end
 
   def round(player)
@@ -44,7 +45,7 @@ class Board
       puts "Invalid move! Try again."
       round(player)
     end
-    show_board
+    puts make_board
   end
 
   def winner?
@@ -91,7 +92,7 @@ def play_game
   player_1 = Player.new(name_1, "X")
   player_2 = Player.new(name_2, "O")
   board = Board.new
-  board.show_board
+  puts board.make_board
 
   # Use turn variable to alternate players
   turn = 1
